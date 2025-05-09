@@ -1,0 +1,116 @@
+<!-- Modal de Perfil -->
+<div class="modal fade" id="profileModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background: linear-gradient(45deg, #1a237e, #0d47a1); color: white;">
+                <h5 class="modal-title">
+                    <i class="fas fa-user-circle me-2"></i>Mi Perfil
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center mb-4">
+                    <div class="profile-avatar mx-auto mb-3">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h4 id="profileName"></h4>
+                </div>
+                <div class="profile-info">
+                    <div class="mb-3">
+                        <label class="text-muted">Usuario</label>
+                        <p id="profileUsername" class="mb-0"></p>
+                    </div>
+                    <div class="mb-3">
+                        <label class="text-muted">Rol</label>
+                        <p id="profileRole" class="mb-0"></p>
+                    </div>
+                    <div class="mb-3">
+                        <label class="text-muted">Último inicio de sesión</label>
+                        <p id="profileLoginTime" class="mb-0"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Cambio de Contraseña -->
+<div class="modal fade" id="changePasswordModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background: linear-gradient(45deg, #1a237e, #0d47a1); color: white;">
+                <h5 class="modal-title">
+                    <i class="fas fa-key me-2"></i>Cambiar Contraseña
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="changePasswordForm">
+                    <div class="mb-3">
+                        <label for="currentPassword" class="form-label">Contraseña Actual</label>
+                        <input type="password" class="form-control" id="currentPassword" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="newPassword" class="form-label">Nueva Contraseña</label>
+                        <input type="password" class="form-control" id="newPassword" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="confirmPassword" class="form-label">Confirmar Nueva Contraseña</label>
+                        <input type="password" class="form-control" id="confirmPassword" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" onclick="changePassword()">
+                    <i class="fas fa-save me-2"></i>Guardar Cambios
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .profile-avatar {
+        width: 100px;
+        height: 100px;
+        background: linear-gradient(45deg, #1a237e, #0d47a1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .profile-avatar i {
+        font-size: 3rem;
+        color: white;
+    }
+    .profile-info label {
+        font-size: 0.875rem;
+    }
+    .profile-info p {
+        font-size: 1.1rem;
+        font-weight: 500;
+    }
+</style>
+
+<script>
+function changePassword() {
+    const currentPassword = document.getElementById('currentPassword').value;
+    const newPassword = document.getElementById('newPassword').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+
+    if (newPassword !== confirmPassword) {
+        alert('Las contraseñas nuevas no coinciden');
+        return;
+    }
+
+    // Aquí iría la lógica para cambiar la contraseña
+    // Por ahora solo mostraremos un mensaje de éxito
+    alert('Contraseña cambiada exitosamente');
+    const modal = bootstrap.Modal.getInstance(document.getElementById('changePasswordModal'));
+    modal.hide();
+}
+</script> 
